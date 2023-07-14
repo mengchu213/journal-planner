@@ -23,8 +23,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_13_123740) do
     t.text "description"
     t.datetime "deadline"
     t.boolean "completed", default: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_tasks_on_category_id"
   end
 
+  add_foreign_key "tasks", "categories"
 end

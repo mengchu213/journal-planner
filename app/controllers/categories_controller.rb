@@ -14,8 +14,12 @@ class CategoriesController < ApplicationController
 
     def update
         @category = Category.find(params[:id])
-        @category.update(category_params)
+       if @category.update(category_params)
+        flash[:notice] = "Category successfully updated!"
         redirect_to @category
+    else
+        render :edit, status: :unprocessable_entity
+      end
     end
 
     def new
@@ -24,8 +28,11 @@ class CategoriesController < ApplicationController
 
     def create
     @category = Category.new(category_params)
-     @category.save
+     if @category.save
      redirect_to @category
+     else 
+        render :new, status: :unprocessable_entity
+  end
      end
 
      def destroy
