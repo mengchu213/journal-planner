@@ -1,0 +1,28 @@
+<h1> Sign In</h1>
+<p>
+  No account yet? <%= link_to "Sign up!", signup_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+</p>
+
+
+<%= form_with(url: session_path) do |f| %>
+
+
+  <div class="mb-6">
+    <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.email_field :email, rows: 7, autofocus: true, required: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
+    <%= f.password_field :password, required: true, rows: 7, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+  </div>
+
+
+  <div class="flex items-center justify-between">
+    <%= f.submit "Sign In", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+
+
+
+
+<% end %>
