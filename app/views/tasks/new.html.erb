@@ -1,0 +1,4 @@
+<h1 class="text-3xl font-bold mb-2">Task for <%= link_to @category.name, @category, class: "text-blue-500 hover:underline"%></h1>
+
+<%= render 'shared/errors', object: @task %>
+<%= render 'form'%>

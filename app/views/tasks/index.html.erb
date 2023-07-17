@@ -1,0 +1,19 @@
+<h1 class="text-3xl font-bold mb-2">Tasks for <%= link_to @category.name, @category, class: "text-blue-500 hover:underline" %> </h1>
+
+
+
+<ul class="tasks space-y-4">
+  <% @tasks.each do |t| %>
+    <li class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <p class="text-xl font-bold text-gray-700">
+        <%= t.name %>
+        <span class="date text-sm text-gray-500">
+          <%= time_ago_in_words(t.created_at) %> ago
+        </span>
+      </p>
+      <p class="text-gray-600">
+        <%= t.description %>
+      </p>
+    </li>
+  <% end %>
+</ul>

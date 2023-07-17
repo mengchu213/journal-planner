@@ -12,6 +12,13 @@
       <p class="text-gray-600 mt-4">
         <%= truncate(category.description, length: 150, separator: ' ') %>
       </p>
+      <p class="text-gray-600 mt-4">
+        <% category.tasks.each do |task| %>
+        <p class="text-gray-600 mt-4">
+         <%= task.name %>
+      </p>
+      <% end %>
+      </p>
     </div>
   </section>
 <% end %>

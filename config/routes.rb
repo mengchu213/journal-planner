@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  
   root "home#index"
 
-  resources :categories
-  resources :tasks
-  resources :home
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  resources :categories do 
+    resources :tasks
+  end
 
-  # Defines the root path route ("/")
+  resources :home
+
+  resources :users
+  get "signup" => "users#new" 
 end
