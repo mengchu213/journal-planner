@@ -10,12 +10,24 @@
       Flowbite
     <% end %>
     <ul class='flex space-x-4'>
-    <li>
+
+
+      <% if current_user %>
+      <li>
+        <%= link_to current_user.name, current_user %>
+      </li>
+
+      <% else %>
+
+      <li>
         <%= link_to "Sign In", signin_path, class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"%>
       </li>
+
       <li>
         <%= link_to "Sign Up", signup_path, class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"%>
       </li>
+
+      <% end %>
     </ul>
   </nav>
 </header>
