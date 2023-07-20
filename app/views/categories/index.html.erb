@@ -1,28 +1,44 @@
-<h1 class="text-3xl font-bold text-gray-700 mb-6">category</h1>
+<div class="container mx-auto px-6 py-8">
+  <h2 class="text-4xl font-bold text-center text-gray-800 mb-8">Categories</h2>
 
-<% @categories.each do |category| %>
-  <section class="category bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6">
-    <div class="summary">
-      <h2 class="text-2xl text-gray-700">
-        <%= link_to category.name, category, class: "font-bold text-blue-500 hover:text-blue-700" %>
-      </h2>
-      <h3 class="text-xl text-gray-500 mt-2">
-        <%= category.description %>
-      </h3>
-      <p class="text-gray-600 mt-4">
-        <%= truncate(category.description, length: 150, separator: ' ') %>
-      </p>
-      <p class="text-gray-600 mt-4">
-        <% category.tasks.each do |task| %>
-        <p class="text-gray-600 mt-4">
-         <%= task.name %>
-      </p>
-      <% end %>
-      </p>
+  <% urgent_categories = @categories.select { |category| category.tasks.where("date(deadline) = ? AND completed = ?", Date.today, false).any? } %>
+
+
+  <% if urgent_categories.any? %>
+    <div class="bg-red-500 text-white p-4 mb-6 rounded">
+      <p>You have urgent tasks today in these categories:</p>
+      <ul>
+        <% urgent_categories.each do |category| %>
+          <li><%= link_to category.name, category_path(category) %></li>
+        <% end %>
+      </ul>
     </div>
-  </section>
-<% end %>
+  <% end %>
 
-<section class="admin py-4">
-  <%= link_to "Add New category", new_category_path, class: "inline-block bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-</section>
+  <% if current_user %>
+    <div class="flex justify-end mb-4">
+      <%= link_to "Add New Category", new_category_path, class: "px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-150 ease-in-out" %>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <% @categories.each do |category| %>
+      <div class="overflow-hidden shadow-lg rounded-lg h-auto md:h-60 w-60 md:w-80 cursor-pointer m-auto">
+        <a href="<%= category_path(category) %>" class="w-full block h-full">
+          <div class="bg-white dark:bg-gray-800 w-full p-4 h-full">
+            <h2 class="text-gray-800 dark:text-white font-bold text-2xl mb-2 truncate"><%= category.name %></h2>
+            <% if category.tasks.where("date(deadline) = ? AND completed = ?", Date.today, false).any? %>
+
+              <p class="text-red-600">You have urgent tasks today!</p>
+            <% end %>
+            <div class="text-gray-600 dark:text-gray-300 font-normal text-base h-full">
+              <% category.tasks.each do |task| %>
+                <p><%= task.name %></p>
+              <% end %>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>

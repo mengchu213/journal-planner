@@ -1,41 +1,33 @@
-<%= render "shared/errors", object: user %>
-
-<%= form_with(model: @user, class: "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4") do |f| %>
-  
-  
-  
-  <div class="mb-4">
-    <%= f.label :username, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.text_field :username, placeholder: "Alphanumeric characters only!", class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
 
 
+    <%= form_with(model: @user, class: 'mt-8 space-y-6') do |f| %>
+      <%= render "shared/errors", object: @user %>
 
-  <div class="mb-4">
-    <%= f.label :name, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.text_field :name, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :username, class: "sr-only" %>
+          <%= f.text_field :username, autofocus: true, required: true, placeholder: "Username (Alphanumeric characters only!)", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :name, class: "sr-only" %>
+          <%= f.text_field :name, required: true, placeholder: "Full Name", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :email, class: "sr-only" %>
+          <%= f.email_field :email, required: true, placeholder: "Email address", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, required: true, placeholder: "Password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :password_confirmation, "Confirm Password", class: "sr-only" %>
+          <%= f.password_field :password_confirmation, required: true, placeholder: "Confirm Password", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+      </div>
 
-  <div class="mb-4">
-    <%= f.label :email, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.email_field :email, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
- <div class="mb-4">
-    <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
- <div class="mb-4">
-    <%= f.label :password_confirmation, "Confirm Password", class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password_confirmation, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
-  <div class="flex items-center justify-between">
-    <% if user.new_record? %>
-    <%= f.submit "Create Account", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-    <%else%>
-    <%= f.submit "Update Account", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+      <div>
+        <%= f.submit (@user.persisted? ? "Update Account" : "Create Account"), class: "group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+      </div>
     <% end %>
-  </div>
-<% end %>
+

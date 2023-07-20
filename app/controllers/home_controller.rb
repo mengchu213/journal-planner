@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
-
-    
-    def index
-        @categories = Category.all
+    def home
+      if current_user
+        redirect_to categories_path
+      end
     end
-end
+  end
+  

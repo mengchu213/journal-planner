@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
 
+    before_action :require_signin, except: [:new, :create]
+    before_action :require_correct_user, only: [:edit, :update, :destroy]
+    before_action :require_admin, only: [:index]
+
+
+  
+
     def index
         @users = User.all
     end
@@ -23,11 +30,9 @@ class UsersController < ApplicationController
     end
 
     def edit
-        @user = User.find(params[:id])
     end
 
     def update
-        @user = User.find(params[:id])
        if @user.update(user_params)
         redirect_to @user, notice: "Account successfully updated!"
        else
@@ -36,7 +41,6 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        @user = User.find(params[:id])
         @user.destroy
         session[:user_id] = nil
         redirect_to categories_url, status: :see_other, 
@@ -47,6 +51,13 @@ class UsersController < ApplicationController
 
 
     private
+
+    #authorization for current user and admin can only edit delete the current account
+    def require_correct_user
+        @user = User.find(params[:id])
+        redirect_to categories_url, status: :see_other unless current_user?(@user) || current_user.admin?
+    end
+
 
     def user_params
         params.require(:user).

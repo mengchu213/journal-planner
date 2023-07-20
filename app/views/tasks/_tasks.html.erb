@@ -1,0 +1,50 @@
+<ul class="tasks space-y-4">
+  <% tasks.select { |t| t.deadline&.to_date == Date.today }.each do |t| %>
+    <%= form_with(model: [category, t], method: :patch, local: true) do |f| %>
+      <li class="bg-white shadow-md rounded px-8 pt-4 pb-4 mb-4 border-red-500 border-2">
+        <div class="flex items-center">
+          <%= f.check_box :completed, class: "mr-4", onchange: 'this.form.submit()' %>
+          <div class="<%= 'line-through' if t.completed %>">
+            <p class="text-xl font-bold text-gray-700">
+              <%= link_to t.name, category_task_path(category, t) %>
+              <span class="date text-sm text-gray-500">
+                Created: <%= time_ago_in_words(t.created_at) %> ago
+              </span>
+            </p>
+            <p class="text-sm text-gray-500">
+              <% if t.deadline %>
+                Deadline: <%= t.deadline.strftime("%d/%m/%Y %H:%M") %>
+              <% else %>
+                Deadline: Not set
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+  <% tasks.reject { |t| t.deadline&.to_date == Date.today }.each do |t| %>
+    <%= form_with(model: [category, t], method: :patch, local: true) do |f| %>
+      <li class="bg-white shadow-md rounded px-8 pt-4 pb-4 mb-4">
+        <div class="flex items-center">
+          <%= f.check_box :completed, class: "mr-4", onchange: 'this.form.submit()' %>
+          <div class="<%= 'line-through' if t.completed %>">
+            <p class="text-xl font-bold text-gray-700">
+              <%= link_to t.name, category_task_path(category, t) %>
+              <span class="date text-sm text-gray-500">
+                Created: <%= time_ago_in_words(t.created_at) %> ago
+              </span>
+            </p>
+            <p class="text-sm text-gray-500">
+              <% if t.deadline %>
+                Deadline: <%= t.deadline.strftime("%d/%m/%Y %H:%M") %>
+              <% else %>
+                Deadline: Not set
+              <% end %>
+            </p>
+          </div>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

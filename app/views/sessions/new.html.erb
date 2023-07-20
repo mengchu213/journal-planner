@@ -1,28 +1,40 @@
-<h1> Sign In</h1>
-<p>
-  No account yet? <%= link_to "Sign up!", signup_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-</p>
+<div class="min-h-screen flex items-center justify-center bg-blue-400 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-md w-full space-y-8 bg-white p-10 rounded-xl shadow">
+    <div>
+      <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        Sign In to Your Account
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Or
+        <%= link_to "create a new account", signup_path, class: "font-medium text-blue-600 
+        hover:text-blue-500" %>
+      </p>
+    </div>
 
+    <%= form_with(url: session_path, class: 'mt-8 space-y-6') do |f| %>
+      <div class="rounded-md shadow-sm -space-y-px">
+        <div>
+          <%= f.label :email_or_username, class: "sr-only" %>
+          <%= f.text_field :email_or_username, autofocus: true, required: true, 
+          placeholder: "Email address or username", class: "appearance-none rounded-none 
+          relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 
+          text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 
+          focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+        <div>
+          <%= f.label :password, class: "sr-only" %>
+          <%= f.password_field :password, required: true, placeholder: "Password", 
+          class: "appearance-none rounded-none relative block w-full px-3 py-2 border 
+          border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none 
+          focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+        </div>
+      </div>
 
-<%= form_with(url: session_path) do |f| %>
-
-
-  <div class="mb-6">
-    <%= f.label :email_or_username, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.text_field :email_or_username, rows: 7, autofocus: true, required: true, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
+      <div>
+        <%= f.submit "Sign In", class: "group relative w-full flex justify-center py-2 px-4 
+        border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 
+        hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="mb-6">
-    <%= f.label :password, class: "block text-gray-700 text-sm font-bold mb-2" %>
-    <%= f.password_field :password, required: true, rows: 7, class: "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" %>
-  </div>
-
-
-  <div class="flex items-center justify-between">
-    <%= f.submit "Sign In", class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-  </div>
-
-
-
-
-<% end %>
+</div>
