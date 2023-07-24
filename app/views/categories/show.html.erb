@@ -16,13 +16,17 @@
         <p class="text-xl text-gray-600"><%= @category.description %></p>
         <div class="bg-white rounded">
           <div class="flex space-x-2 justify-between items-start pt-10">
-            <h2><%= link_to "List of Tasks", category_tasks_path(@category), class: "text-2xl font-bold text-blue-700 mb-4 " %></h2>
+           <h2><%= link_to "List of Tasks", category_tasks_path(@category), class: "text-2xl font-bold text-blue-700 mb-4 " %></h2>
+             <%= turbo_frame_tag 'new_task' do %>
             <% if current_user %>
+            <%= turbo_frame_tag 'new_task' do %>
               <div class="flex items-center justify-between mb-6">
                 <%= link_to "New Task!", new_category_task_path(@category), class: "px-4 py-2 bg-green-500 text-white rounded hover:bg-green-700 transition duration-150 ease-in-out" %>
               </div>
+              <% end %>
             <% end %>
           </div>
+          <% end %>
           <%= turbo_frame_tag 'tasks_frame' do %>
         <%= render 'tasks/tasks', tasks: @tasks, category: @category %>
         <% end %>

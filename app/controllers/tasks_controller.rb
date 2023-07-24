@@ -12,10 +12,6 @@ class TasksController < ApplicationController
     end
   end
 
-  def today
-    @tasks = current_user.tasks.where("deadline::date = ?", Date.today)
-  end
-  
 
   def new
     @task = @category.tasks.new
@@ -54,7 +50,7 @@ class TasksController < ApplicationController
     if current_user
       @task = @category.tasks.find(params[:id])
     else
-      redirect_to new_session_url, alert: "Please Sign In first!"
+      redirect_to new_session_url, alert: "Please sign in first!"
     end
   end
 

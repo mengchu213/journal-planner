@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
-    before_action :require_signin
+    before_action :require_signin, except: [:show]
+    before_action :set_category, only: [:edit, :update, :destroy]
   
     def index
         if current_user
@@ -11,7 +12,7 @@ class CategoriesController < ApplicationController
     
       def show
         if current_user
-          @category = current_user.categories.find(params[:id])
+          set_category
           @tasks = @category.tasks 
         else
           redirect_to new_session_url, alert: "Please Sign In first!"
@@ -32,11 +33,11 @@ class CategoriesController < ApplicationController
     end
   
     def edit
-      @category = current_user.categories.find(params[:id])
+      
     end
   
     def update
-      @category = current_user.categories.find(params[:id])
+      
       if @category.update(category_params)
         flash[:notice] = "Category successfully updated!"
         redirect_to @category
@@ -46,7 +47,6 @@ class CategoriesController < ApplicationController
     end
   
     def destroy
-      @category = current_user.categories.find(params[:id])
       @category.destroy
       redirect_to categories_url, status: :see_other
     end
@@ -55,6 +55,10 @@ class CategoriesController < ApplicationController
   
     def category_params
       params.require(:category).permit(:name, :description)
+    end
+
+    def set_category
+      @category = current_user.categories.find(params[:id])
     end
   end
   

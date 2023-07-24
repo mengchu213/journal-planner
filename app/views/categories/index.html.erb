@@ -3,7 +3,6 @@
 
   <% urgent_categories = @categories.select { |category| category.tasks.where("date(deadline) = ? AND completed = ?", Date.today, false).any? } %>
 
-
   <% if urgent_categories.any? %>
     <div class="bg-red-500 text-white p-4 mb-6 rounded">
       <p>You have urgent tasks today in these categories:</p>
@@ -26,14 +25,17 @@
       <div class="overflow-hidden shadow-lg rounded-lg h-auto md:h-60 w-60 md:w-80 cursor-pointer m-auto">
         <a href="<%= category_path(category) %>" class="w-full block h-full">
           <div class="bg-white dark:bg-gray-800 w-full p-4 h-full">
-            <h2 class="text-gray-800 dark:text-white font-bold text-2xl mb-2 truncate"><%= category.name %></h2>
+            <h2 class="text-gray-800 dark:text-white font-bold text-2xl mb-2"><%= category.name %></h2>
             <% if category.tasks.where("date(deadline) = ? AND completed = ?", Date.today, false).any? %>
-
               <p class="text-red-600">You have urgent tasks today!</p>
             <% end %>
-            <div class="text-gray-600 dark:text-gray-300 font-normal text-base h-full">
+            <div class="text-gray-600 dark:text-gray-300 font-normal text-base h-full multi-column">
               <% category.tasks.each do |task| %>
-                <p><%= task.name %></p>
+                <% if task.deadline&.today? && !task.completed %>
+                  <p class="text-red-600"><%= task.name %></p> 
+                <% else %>
+                  <p><%= task.name %></p>
+                <% end %>
               <% end %>
             </div>
           </div>
