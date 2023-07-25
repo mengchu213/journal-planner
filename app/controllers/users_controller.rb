@@ -39,11 +39,18 @@ class UsersController < ApplicationController
     end
 
     def destroy
-        @user.destroy
-        session[:user_id] = nil
-        redirect_to categories_url, status: :see_other, 
-        alert: "Account successfully deleted!"
-    end
+        if @user == current_user
+          @user.destroy
+          session[:user_id] = nil
+          redirect_to root_url, status: :see_other, 
+          alert: "Account successfully deleted!"
+        else current_user.admin?
+          @user.destroy
+          redirect_to users_url, status: :see_other, 
+          alert: "User account successfully deleted!"
+        end
+      end
+      
 
 
 
