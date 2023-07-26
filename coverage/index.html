@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-07-24T18:22:55+08:00">2023-07-24T18:22:55+08:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-07-26T19:50:56+08:00">2023-07-26T19:50:56+08:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  97.27%
+  97.32%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.97
+         1.94
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>220</b> relevant lines,
-    <span class="green"><b>214</b> lines covered</span> and
+    <b>224</b> relevant lines,
+    <span class="green"><b>218</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed. </span>
     (<span class="green">
-  97.27%
+  97.32%
 </span>
 )
   </div>
@@ -128,11 +128,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#72ab9a293687e8f811c719634d9b77785cacb3a5" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">65</td>
-            <td class="cell--number">31</td>
-            <td class="cell--number">31</td>
+            <td class="cell--number">72</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">35</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.00</td>
+            <td class="cell--number">1.83</td>
             
           </tr>
         
@@ -470,14 +470,14 @@
     <span class="group_name">Controllers</span>
     (<span class="covered_percent">
       <span class="green">
-  95.89%
+  96.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.27
+         2.23
        </span>
     </span> hits/line
     )
@@ -490,11 +490,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>146</b> relevant lines,
-    <span class="green"><b>140</b> lines covered</span> and
+    <b>150</b> relevant lines,
+    <span class="green"><b>144</b> lines covered</span> and
     <span class="red"><b>6</b> lines missed. </span>
     (<span class="green">
-  95.89%
+  96.0%
 </span>
 )
   </div>
@@ -575,11 +575,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#72ab9a293687e8f811c719634d9b77785cacb3a5" class="src_link" title="app/controllers/users_controller.rb">app/controllers/users_controller.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">65</td>
-            <td class="cell--number">31</td>
-            <td class="cell--number">31</td>
+            <td class="cell--number">72</td>
+            <td class="cell--number">35</td>
+            <td class="cell--number">35</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.00</td>
+            <td class="cell--number">1.83</td>
             
           </tr>
         
@@ -3543,8 +3543,8 @@
     
 
     <div class="t-line-summary">
-      <b>31</b> relevant lines.
-      <span class="green"><b>31</b> lines covered</span> and
+      <b>35</b> relevant lines.
+      <span class="green"><b>35</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -4013,40 +4013,40 @@
 
             
 
-            <code class="ruby">        @user.destroy</code>
+            <code class="ruby">        if @user == current_user</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="43">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="43">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        session[:user_id] = nil</code>
+            <code class="ruby">          @user.destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="44">
-            <span class="hits">2</span>
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        redirect_to categories_url, status: :see_other, </code>
+            <code class="ruby">          session[:user_id] = nil</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="45">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="45">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        alert: &quot;Account successfully deleted!&quot;</code>
+            
+
+            <code class="ruby">          redirect_to root_url, status: :see_other, </code>
           </li>
         </div>
       
@@ -4057,40 +4057,40 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">          alert: &quot;Account successfully deleted!&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="47">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="47">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">        else current_user.admin?</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="48">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">          @user.destroy</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="49">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="49">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">          redirect_to users_url, status: :see_other, </code>
           </li>
         </div>
       
@@ -4101,18 +4101,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">          alert: &quot;User account successfully deleted!&quot;</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="51">
+            
             
 
             
 
-            <code class="ruby">    private</code>
+            <code class="ruby">        end</code>
           </li>
         </div>
       
@@ -4123,7 +4123,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
@@ -4134,40 +4134,40 @@
 
             
 
-            <code class="ruby">    #authorization for current user and admin can only edit delete the current account</code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="54">
+            
             
 
             
 
-            <code class="ruby">    def require_correct_user</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="55">
-            <span class="hits">6</span>
+          <li class="never" data-hits="" data-linenumber="55">
+            
             
 
             
 
-            <code class="ruby">        @user = User.find(params[:id])</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="56">
-            <span class="hits">6</span>
+          <li class="never" data-hits="" data-linenumber="56">
+            
             
 
             
 
-            <code class="ruby">        redirect_to categories_url, status: :see_other unless current_user?(@user) || current_user.admin?</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4178,18 +4178,18 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="58">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="58">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    private</code>
           </li>
         </div>
       
@@ -4205,46 +4205,46 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
+            <code class="ruby">    #authorization for current user and admin can only edit delete the current account</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="61">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def user_params</code>
+            <code class="ruby">    def require_correct_user</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="61">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="6" data-linenumber="62">
+            <span class="hits">6</span>
             
 
             
 
-            <code class="ruby">        params.require(:user).</code>
+            <code class="ruby">        @user = User.find(params[:id])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="62">
-            
-            
-
-            
-
-            <code class="ruby">        permit(:name, :email, :password, :password_confirmation, :username)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="63">
-            
+          <li class="covered" data-hits="6" data-linenumber="63">
+            <span class="hits">6</span>
             
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">        redirect_to categories_url, status: :see_other unless current_user?(@user) || current_user.admin?</code>
           </li>
         </div>
       
@@ -4255,12 +4255,89 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="67">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def user_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="7" data-linenumber="68">
+            <span class="hits">7</span>
+            
+
+            
+
+            <code class="ruby">        params.require(:user).</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
+            <code class="ruby">        permit(:name, :email, :password, :password_confirmation, :username)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="70">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="71">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="72">
             
             
 
@@ -5170,7 +5247,7 @@
 
             
 
-            <code class="ruby">  has_many :categories</code>
+            <code class="ruby">  has_many :categories, dependent: :destroy</code>
           </li>
         </div>
       

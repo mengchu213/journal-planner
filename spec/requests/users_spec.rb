@@ -94,23 +94,38 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "DELETE /destroy" do
-    let(:user_to_delete) { create(:user) }
-  
-    before do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_to_delete)
+    context "when the user is the current user" do
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      end
+
+      it "destroys the requested user and redirects to the root url" do
+        expect {
+          delete user_url(user)
+        }.to change(User, :count).by(-1)
+
+        expect(response).to redirect_to(root_url)
+      end
     end
-  
-    it "destroys the requested user" do
-      expect {
-        delete user_path(user_to_delete)
-      }.to change(User, :count).by(-1)
-    end
-  
-    it "redirects to the users list" do
-      delete user_path(user_to_delete)
-      expect(response).to redirect_to(categories_url)
+
+    context "when the current user is an admin" do
+      let(:admin) { create(:admin) } 
+
+      before do
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+      end
+
+      it "destroys the requested user and redirects to the users url" do
+        expect {
+          delete user_url(user)
+        }.to change(User, :count).by(-1)
+
+        expect(response).to redirect_to(users_url)
+      end
     end
   end
+
+  
   
   
   

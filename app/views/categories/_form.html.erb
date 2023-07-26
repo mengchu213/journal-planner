@@ -6,7 +6,7 @@
   <div class="rounded-md shadow-sm -space-y-px">
     <div>
       <%= f.label :name, class: "sr-only" %>
-      <%= f.text_field :name, autofocus: true, required: true, placeholder: "Category Name", class: "appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
+      <%= f.text_field :name, autofocus: true, required: true, placeholder: "Category Name", class: "appearance-none rounded-none  block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" %>
     </div>
 
     <div>
@@ -16,6 +16,6 @@
   </div>
 
   <div>
-    <%= f.submit (@category.persisted? ? "Update Category" : "Create Category"), class: "group relative w-full flex justify-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
+    <%= f.submit (@category.persisted? ? "Update Category" : "Create Category"), class: "cursor-pointer group relative w-full flex justify-center text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 shadow-lg shadow-blue-500/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" %>
   </div>
 <% end %>

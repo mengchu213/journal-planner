@@ -5,7 +5,7 @@
         <div class="flex items-center">
           <%= f.check_box :completed, class: "mr-4", onchange: 'this.form.submit()' %>
           <div class="<%= 'line-through' if t.completed %>">
-            <p class="text-xl font-bold text-gray-700">
+            <p class="text-xl font-bold text-gray-700 hover:text-yellow-500">
               <%= link_to t.name, category_task_path(category, t) %>
               <span class="date text-sm text-gray-500">
                 Created: <%= time_ago_in_words(t.created_at) %> ago
@@ -29,7 +29,7 @@
         <div class="flex items-center">
           <%= f.check_box :completed, class: "mr-4", onchange: 'this.form.submit()' %>
           <div class="<%= 'line-through' if t.completed %>">
-            <p class="text-xl font-bold text-gray-700">
+            <p class="text-xl font-bold text-gray-700 hover:text-yellow-500 ">
               <%= link_to t.name, category_task_path(category, t) %>
               <span class="date text-sm text-gray-500">
                 Created: <%= time_ago_in_words(t.created_at) %> ago
