@@ -1,9 +1,14 @@
 <ul class="tasks space-y-4">
+  <!-- Loop through each task where the deadline is today -->
   <% tasks.select { |t| t.deadline&.to_date == Date.today }.each do |t| %>
+    <!-- Create a form for the task with PATCH HTTP method -->
     <%= form_with(model: [category, t], method: :patch, local: true) do |f| %>
+      <!-- Each task is a list item -->
       <li class="bg-white shadow-md rounded px-8 pt-4 pb-4 mb-4 border-red-500 border-2">
         <div class="flex items-center">
+          <!-- Checkbox for marking task as completed. Auto submits form on change -->
           <%= f.check_box :completed, class: "mr-4", onchange: 'this.form.submit()' %>
+          <!-- Container for task details. If task is completed, 'line-through' -->
           <div class="<%= 'line-through' if t.completed %>">
             <p class="text-xl font-bold text-gray-700 hover:text-yellow-500">
               <%= link_to t.name, category_task_path(category, t) %>
@@ -11,6 +16,7 @@
                 Created: <%= time_ago_in_words(t.created_at) %> ago
               </span>
             </p>
+            <!-- Task deadline or 'Not set' if there's no deadline -->
             <p class="text-sm text-gray-500">
               <% if t.deadline %>
                 Deadline: <%= t.deadline.strftime("%d/%m/%Y %H:%M") %>
@@ -23,11 +29,14 @@
       </li>
     <% end %>
   <% end %>
+  <!-- Loop through each task where the deadline is NOT today -->
   <% tasks.reject { |t| t.deadline&.to_date == Date.today }.each do |t| %>
     <%= form_with(model: [category, t], method: :patch, local: true) do |f| %>
       <li class="bg-white shadow-md rounded px-8 pt-4 pb-4 mb-4">
         <div class="flex items-center">
+          <!-- Checkbox for marking task as completed. Auto submits form on change -->
           <%= f.check_box :completed, class: "mr-4", onchange: 'this.form.submit()' %>
+          <!-- Container for task details. If task is completed, 'line-through' class is added -->
           <div class="<%= 'line-through' if t.completed %>">
             <p class="text-xl font-bold text-gray-700 hover:text-yellow-500 ">
               <%= link_to t.name, category_task_path(category, t) %>
@@ -35,6 +44,7 @@
                 Created: <%= time_ago_in_words(t.created_at) %> ago
               </span>
             </p>
+            <!-- Task deadline or 'Not set' if there's no deadline -->
             <p class="text-sm text-gray-500">
               <% if t.deadline %>
                 Deadline: <%= t.deadline.strftime("%d/%m/%Y %H:%M") %>
@@ -48,3 +58,4 @@
     <% end %>
   <% end %>
 </ul>
+

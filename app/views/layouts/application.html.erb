@@ -11,18 +11,16 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="">
+  <body class="flex flex-col min-h-screen">
 
     <%= render 'layouts/header' %>
 
-   <div class="content ">
-  <%= render "layouts/flash" %>
-
-  <%= yield %>
-</div>
+    <div class="content flex-grow">
+      <%= render "layouts/flash" %>
+      <%= yield %>
+    </div>
 
     <%= render 'layouts/footer' %>
 
-    
   </body>
 </html>

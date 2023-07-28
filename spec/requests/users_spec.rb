@@ -130,3 +130,16 @@ RSpec.describe "Users", type: :request do
   
   
 end
+
+# Comments:
+# 1. The file starts by requiring the 'rails_helper' file, which configures the Rails testing environment.
+# 2. RSpec.describe "Users": Initializes a test suite for the Users request.
+# 3. let(:user) and let(:admin): These lines create test instances of a user and an admin for use in the tests.
+# 4. before: This block stubs the current_user method to return the test user, simulating a logged in user.
+# 5. describe "GET /index": This block tests the index action. It allows the current_user method to return the admin to simulate an admin accessing the index action.
+# 6. describe "GET /show": This block tests the show action, ensuring that it returns http success.
+# 7. describe "GET /new": This block tests the new action, ensuring that it returns http success.
+# 8. describe "POST /create": This block tests the create action. It tests both valid and invalid parameters, checking the user count and the http status.
+# 9. describe "GET /edit": This block tests the edit action, ensuring that it returns http success.
+# 10. describe "PATCH /update": This block tests the update action. It checks whether the user is updated correctly and whether the HTTP response is as expected. It also checks for an unprocessable entity response when invalid attributes are provided.
+# 11. describe "DELETE /destroy": This block tests the destroy action. It has two contexts - when the user is the current user and when the current user is an admin. It checks whether the user count is decreased and the correct redirect occurs upon deletion.
