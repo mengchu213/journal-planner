@@ -32,13 +32,13 @@ class TasksController < ApplicationController
   end
 
   def update
-    if update_task
-      flash.now[:notice] = "Task successfully updated!"
-      handle_successful_update
+    if @task.update(task_params)
+      redirect_to category_url(@category), notice: "Task successfully updated!"
     else
-      handle_failed_update
+      render :edit, status: :unprocessable_entity
     end
   end
+  
   
 
   def destroy
@@ -72,22 +72,5 @@ class TasksController < ApplicationController
     redirect_to categories_url, status: :see_other unless current_user?(@category.user)
   end
 
-  def update_task
-    @task.update(task_params)
-  end
-
-  def handle_successful_update
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update('flash', partial: 'layouts/flash', locals: { flash: flash }) +
-                            turbo_stream.replace('tasks_frame', partial: 'tasks/tasks', locals: { tasks: @category.tasks, category: @category })
-      end
-      format.html { redirect_to category_url(@category) }
-    end
-  end
   
-
-  def handle_failed_update
-    render :edit, status: :unprocessable_entity
-  end
 end
