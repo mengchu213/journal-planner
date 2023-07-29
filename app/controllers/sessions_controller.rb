@@ -1,12 +1,11 @@
 class SessionsController < ApplicationController
-  # The new action corresponds to the login form. It's empty because it does not need to set up any instance variables.
+
   def new
   end
 
   # The create action handles the submission of the login form. 
   # It attempts to find the user by email or username and then verifies the password.
   def create
-    # Try to find a user either by email or username
     user = User.find_by(email: params[:email_or_username]) ||
            User.find_by(username: params[:email_or_username])
     
@@ -22,7 +21,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  # The destroy action logs out the current user and redirects to the root page.
+ 
   def destroy
     session[:user_id] = nil
     redirect_to root_path, status: :see_other, notice: "You're now signed out!"

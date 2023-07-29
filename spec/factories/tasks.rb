@@ -17,7 +17,6 @@ end
 
 
 # Comments:
-# 1. FactoryBot.define: This line uses the FactoryBot framework to define a factory for creating test data.
 # 2. factory :task: This line defines a factory named :task, which is a blueprint for creating test instances of the Task model.
 # 3. sequence(:name): A sequence is used here to generate unique names for each task instance created by the factory.
 # 4. description: This line sets the description for each task instance created by the factory to 'A test task description.'.

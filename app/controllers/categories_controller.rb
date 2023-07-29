@@ -1,8 +1,5 @@
 class CategoriesController < ApplicationController
-  # This line ensures the user is signed in for all actions except the show action.
   before_action :require_signin, except: [:show]
-  
-  # This line fetches the category for the edit, update, and destroy actions.
   before_action :set_category, only: [:edit, :update, :destroy]
 
   # The index action fetches all categories of the current user if there is one.
@@ -33,7 +30,6 @@ class CategoriesController < ApplicationController
 
   # The create action creates a new category with the submitted parameters.
   # If the category is saved successfully, it redirects to the show page for that category.
-  # If it fails, it re-renders the new page with an unprocessable entity status.
   def create
     @category = current_user.categories.build(category_params)
     if @category.save
@@ -43,13 +39,11 @@ class CategoriesController < ApplicationController
     end
   end
 
-  # The edit action is empty because the before_action :set_category has already fetched the category.
   def edit
   end
 
   # The update action updates the category with the submitted parameters.
   # If the category is updated successfully, it redirects to the show page for that category.
-  # If it fails, it re-renders the edit page with an unprocessable entity status.
   def update
     if @category.update(category_params)
       flash[:notice] = "Category successfully updated!"
